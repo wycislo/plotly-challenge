@@ -4,7 +4,7 @@
  
 
 // Color palette for Gauge Chart
-var arrColorsG = ["#5899DA", "#E8743B", "#19A979", "#ED4A7B", "#945ECF", "#13A4B4", "#525DF4", "#BF399E", "#6C8893", "white"];
+let arrColorsG = ["#5899DA", "#E8743B", "#19A979", "#ED4A7B", "#945ECF", "#13A4B4", "#525DF4", "#BF399E", "#6C8893", "white"];
 
 
 // Use`d 3.json` to fetch the metadata for a sample
@@ -12,12 +12,12 @@ var arrColorsG = ["#5899DA", "#E8743B", "#19A979", "#ED4A7B", "#945ECF", "#13A4B
 // tags for each key-value in the metadata.
 function buildMetadata(sample) {
   d3.json("samples.json").then((data) => {
-    var metadata= data.metadata;
-    var resultsarray= metadata.filter(sampleobject => 
+    let metadata= data.metadata;
+    let resultsarray= metadata.filter(sampleobject => 
       sampleobject.id == sample);
-    var result= resultsarray[0]
+    let result= resultsarray[0]
 // Use d3 to select the panel with id of `#sample-metadata`
-    var panel = d3.select("#sample-metadata");
+    let panel = d3.select("#sample-metadata");
 // Use `.html("") to clear any existing metadata
     panel.html("");
 // Use `Object.entries` to add each key and value pair to the panel
@@ -38,10 +38,10 @@ function buildGaugeChart(sample) {
 
   d3.json("samples.json").then(data =>{
 
-    var objs = data.metadata;
+    let objs = data.metadata;
     //console.log("objs", objs);
 
-    var matchedSampleObj = objs.filter(sampleData => 
+    let matchedSampleObj = objs.filter(sampleData => 
       sampleData["id"] === parseInt(sample));
     //console.log("buildGaugeChart matchedSampleObj", matchedSampleObj);
 
@@ -131,26 +131,26 @@ function buildCharts(sample) {
 
 // Use `d3.json` to fetch the sample data for the plots
 d3.json("samples.json").then((data) => {
-  var samples= data.samples;
-  var resultsarray= samples.filter(sampleobject => 
+  let samples= data.samples;
+  let resultsarray= samples.filter(sampleobject => 
       sampleobject.id == sample);
-  var result= resultsarray[0]
+  let result= resultsarray[0]
 
-  var ids = result.otu_ids;
-  var labels = result.otu_labels;
-  var values = result.sample_values;
+  let ids = result.otu_ids;
+  let labels = result.otu_labels;
+  let values = result.sample_values;
 
 //======================================================//
 //================ Build a BUBBLE Chart=================// 
 //======================================================//
 
-  var LayoutBubble = {
+  let LayoutBubble = {
     margin: { t: 0 },
     xaxis: { title: "OTU ID" },
     hovermode: "closest",
     };
 
-    var DataBubble = [ 
+    let DataBubble = [ 
     {
       x: ids,
       y: values,
@@ -169,7 +169,7 @@ d3.json("samples.json").then((data) => {
 //=========================================================//
 //===============  Build a BAR Chart=======================//
 //=========================================================// 
-  var bar_data =[
+  let bar_data =[
     {
       y:ids.slice(0, 10).map(otuID => `OTU ${otuID}`).reverse(),
       x:values.slice(0,10).reverse(),
@@ -180,7 +180,7 @@ d3.json("samples.json").then((data) => {
     }
   ];
 
-  var barLayout = {
+  let barLayout = {
     title: "Top 10 Bacteria Cultures Found",
     margin: { t: 30, l: 150 }
   };
@@ -194,11 +194,11 @@ d3.json("samples.json").then((data) => {
 
 function init() {
 // Grab a reference to the dropdown select element
-var selector = d3.select("#selDataset");
+let selector = d3.select("#selDataset");
 
 // Use the list of sample names to populate the select options
 d3.json("samples.json").then((data) => {
-  var sampleNames = data.names;
+  let sampleNames = data.names;
   sampleNames.forEach((sample) => {
     selector
       .append("option")
