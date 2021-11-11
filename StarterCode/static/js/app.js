@@ -1,6 +1,6 @@
 
  // create a function to read data for dropdwown
- function init() {
+ function loadDropdown() {
     // select dropdown menu 
     let dropdown = d3.select("#selDataset");
 
@@ -19,15 +19,5 @@
     });
 }
 
-init();
+loadDropdown();
 
-function load_dropdown() {
-    let dropdown = d3.select("selDataset");
-    // get data from samples JSON
-    d3.json("samples.json").then((data)=> {
-        console.log(data)
-    })
-
-
-
-}
