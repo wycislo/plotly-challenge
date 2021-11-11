@@ -27,6 +27,22 @@ d3.json("samples.json").then (sampledata =>{
         type:"bar",
         orientation: "h",
     };
+     // create data variable
+     var data = [trace];
+    
+     // create layout variable to set plots layout
+     var layout = {
+         title: "Top 10 OTU",
+         yaxis:{
+             tickmode:"linear",
+         },
+         margin: {
+             l: 100,
+             r: 100,
+             t: 100,
+             b: 30
+         }
+     };
 
  // create a function to read data for dropdwown
  function loadDropdown() {
@@ -72,12 +88,7 @@ function loadDemoInfo(id) {
            });
                
 
-    })
-
-
-
-
-}
+    });
 
 
 loadDropdown();
