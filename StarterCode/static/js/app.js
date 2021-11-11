@@ -40,7 +40,8 @@ function loadDemoInfo(id) {
         // grab the necessary demographic data data for the id and append the info to the panel
            Object.entries(result).forEach((key) => {   
                demographicInfo.append("h5").text(key[0].toUpperCase() + ": " + key[1] + "\n");
-           });    
+           });
+               
 
     })
 
